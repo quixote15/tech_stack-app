@@ -1,1 +1,3 @@
-export default LibraryReducer  = () => []
+import data from './LibraryReducer.json'
+
+export default LibraryReducer  = () => data
