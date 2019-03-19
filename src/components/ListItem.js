@@ -8,8 +8,8 @@ import {connect} from 'react-redux'
 class ListItem extends Component {
 
     renderDescription(){
-        const {library, selectedLibraryId}  = this.props
-        if(library.id === selectedLibraryId)
+        const {library, expended}  = this.props
+        if(expended)
             return <Text>{library.description}</Text>
     }
     
@@ -38,8 +38,9 @@ const styles = {
     }
 }
 
-const mapStatetoProps = (state) => {
-    return {selectedLibraryId: state.selectedLibraryId}
+const mapStatetoProps = (state, ownProps) => {
+    const expended = ownProps.library.id === state.selectedLibraryId;
+    return {expended}
 }
 
 export default connect(mapStatetoProps, actions)(ListItem)
